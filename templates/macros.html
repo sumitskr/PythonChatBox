@@ -1,0 +1,15 @@
+{% macro render(fieldName) %}
+<div>
+    {{ fieldName.label }}
+   <br>
+    {{ fieldName(**kwargs) }}
+    <ul>
+        {% for error in fieldName.errors %}
+        <li>
+            {{ error }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro %}
+

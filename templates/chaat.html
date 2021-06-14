@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename='indexcss.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body class="chatbody">
+
+    <h1 style="text-align: left;padding-left: 25px;margin: 8px;">Py-Chat Room </h1>
+    <div id="msgs">
+            
+            
+            
+    </div>
+    <form id="message_submit" class="senderbox">
+        <input id="message_input" >
+        <button type="submit">Send</button>
+    </form>
+
+</body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.1/socket.io.js"></script> 
+<script>
+
+
+// Connect to websocket
+    const socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+  
+    
+    
+
+    socket.on('connect',function(){
+        socket.emit('join_room',{
+            username : "{{ username }}",
+            room_id :"{{ room_id }}",
+        });
+        let message_input = document.getElementById("message_input");
+        document.getElementById("message_submit").onsubmit = function(e){
+            e.preventDefault();
+            let message = message_input.value.trim();
+            if(message.length){
+                socket.emit("send_message",{
+                    username : "{{ username }}",
+                    room_id :"{{ room_id }}",
+                    message : message 
+                     });
+                }
+            message_input.value = '';
+            message_input.focus();
+            }
+            
+        
+    });
+
+    socket.on('recieve_message',function(data){
+        console.log(data);
+        console.log(data['username']);
+        // let newnode = document.createElement('div');
+        // newnode.innerHTML = `${data.username}: &nbsp; ${data.message}`;
+        // document.getElementById('msgs').appendChild(newnode);
+
+        if(data['username']=="{{ username }}")
+        {
+            let newnode = document.createElement('div');
+            newnode.classList.add("self-class");
+            
+                
+            
+            // newnode.innerHTML = `<p style="padding-left:5px;" class="pright">${data.message}</p>`;
+            newnode.innerHTML = `<p class="show-read-more">${data.message}</p>`;
+            document.getElementById('msgs').appendChild(newnode);
+            var objDiv = document.getElementById("msgs");
+            objDiv.scrollTop = objDiv.scrollHeight;
+            
+
+        }
+        else{
+            let newnode = document.createElement('div');
+            newnode.classList.add("others-class");
+            newnode.innerHTML = `${data.username}: &nbsp; ${data.message}`;
+            document.getElementById('msgs').appendChild(newnode);
+        }
+
+    });
+
+    socket.on('join_room_announcement',function(data){
+        console.log(data);
+        let newnode = document.createElement('div');
+        
+        newnode.classList.add('joinannounce');
+        newnode.innerHTML = `${data.username} has joined room on ${date()}`;
+        document.getElementById('msgs').appendChild(newnode);
+
+    });
+
+
+    function date(){
+        var d = new Date();
+        h = d.getHours();
+        m = d.getMinutes();
+        console.log(h,m);
+        time = h+":"+m
+        return time
+    };
+
+    
+ 
+</script>
+</html>

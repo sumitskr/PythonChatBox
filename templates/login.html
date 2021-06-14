@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% from 'macros.html' import render %}
+{% block body %}
+
+<div style="padding-top: 45px;">
+<section class="testimonial py-5" id="testimonial" >
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="/static/ss.svg" style="width:50%">
+                        <h2 class="py-3">Chat Box</h2>
+                        <p>
+                            Hey,I am Sumit Sarkar
+                        </p>
+
+</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 py-5 border">
+            
+                <form  class="form-class" action="/login" method="post">
+                    <h3 class="reg">Login Form</h3>
+                    <div>
+                        
+                        <div class="">
+                          {{ render(login_form.username) }}
+                        </div>
+                        <div class="">
+                            {{ render(login_form.password) }} 
+                        </div>
+                      </div>
+                      {{ login_form.csrf_token }}
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-danger">Login</button>
+                        &nbsp;
+                    </div>
+                </form>
+                <a class="a" href="/"> click here to Register</a>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<div class="footer">
+    <ul class="unLis">
+        <li> <a href="https://github.com/sumitskr">Devloper : Sumit Sarkar</a></li>
+        &nbsp;
+        <li>GitHub</li>
+        &nbsp;
+        <li>Instagram</li>
+
+    </ul>
+    
+</div>
+{% endblock %}

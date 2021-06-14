@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% from 'macros.html' import render %}
+{% block body %}
+<!-- <div class="container-fluid">
+    <div class="div1 container-fluid ">
+        <h1>Sumit Sarkar</h1>
+    </div>
+    <div class="div2 container-fluid  ">
+        <form action="/" class="form2" method="post">
+
+            {{ render(reg_form.username) }}
+            {{ render(reg_form.password) }}
+            {{ render(reg_form.confirm_password) }}
+            <button class="button1" type="submit">create</button>
+        </form>
+
+    </div>
+</div> -->
+
+<div style="padding-top: 45px;">
+<section class="testimonial py-5" id="testimonial" >
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="/static/ss.svg" style="width:50%">
+                        <h2 class="py-3">Chat Box</h2>
+                        <p>
+                            Hey,I am Sumit Sarkar
+                        </p>
+
+</p>
+                    </div>
+                </div>
+            </div>
+            <div id="regform" class="col-md-7 py-5 border">
+            
+                <form  class="form-class" action="/" method="post">
+                    <h3 class="reg">Registration Form</h3>
+                    <div>
+                        
+                        <div class="">
+                          {{ render(reg_form.username) }}
+                        </div>
+                        <div class="">
+                            {{ render(reg_form.password) }} 
+                        </div>
+                        <div class="">
+                            {{ render(reg_form.confirm_password) }} 
+                        </div>
+                      </div>
+                      {{ reg_form.csrf_token }}
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                        &nbsp;
+                    </div>
+                </form>
+                <a class="a" id="clicklog" > click here to login</a>
+            </div>
+
+            <div id="loginform" class="col-md-7 py-5 border">
+            
+                <form  class="form-class" >
+                    <h3 class="reg">Login Form</h3>
+                    <div>
+                        
+                        <div class="">
+                          {{ render(login_form.username) }}
+                        </div>
+                        <div class="">
+                            {{ render(login_form.password) }} 
+                        </div>
+                      </div>
+                      {{ login_form.csrf_token }}
+                    <div class="form-row">
+                        <button type="submit" id="login-btn" class="btn btn-danger">Login</button>
+                        &nbsp;
+                    </div>
+                </form>
+                <a id="clickreg" class="a"> click here to Register</a>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+</div>
+<div class="footer">
+    <ul class="unLis">
+        <li> <a href="https://github.com/sumitskr">Devloper : Sumit Sarkar</a></li>
+        &nbsp;
+        <li>GitHub</li>
+        &nbsp;
+        <li>Instagram</li>
+
+    </ul>
+    
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        $("#loginform").hide();
+        $("#clicklog").on("click", function(){
+            $("#loginform, #regform").toggle();
+        });
+    });
+    $(function(){
+        $("#clickreg").on("click", function(){
+            $("#regform, #loginform").toggle();
+        });
+    });
+
+    $('#clicklog').click(function(){
+        $.ajax({
+            type:'POST',
+            url:'/login',
+            success : function(response){
+                alert(response);
+            }
+
+        });
+    });
+
+
+
+</script>
+{% endblock %}

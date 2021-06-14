@@ -1,0 +1,129 @@
+.indexb{
+
+    
+    background-image: linear-gradient(to left,rgba(255,0,0,0), rgb(87, 53, 53));
+}
+
+.reg{
+    font-size: 40px;
+    font-family: serif;
+}
+.form-class{
+    padding-left: 25px;
+}
+.username{
+    height: 1cm;
+    width: 10cm;  
+    border-radius: 5px;      
+    text-indent: 15px;
+    
+
+}
+.password{
+    height: 1cm;
+    width: 10cm;  
+    text-indent: 15px;
+    border-radius: 5px;      
+
+}
+.button1{
+    height: 1cm;
+    width: 2cm;
+    font-size: 20px;
+    text-align: center ;
+    border-radius: 5px;
+}
+.footer{
+    padding-top: 25px;
+    position:sticky;
+
+    text-align: center;
+}
+.footer ul li{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 0px 1px #555050;
+    display: inline;
+}
+.footer ul li a{
+    text-decoration: none !important;
+    color: inherit;
+}
+.a{
+    padding-left: 25px;
+    color: beige;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    text-decoration: none;
+    font-size: 18px;
+}
+.chatbody{
+    height: auto;
+    width: auto;
+}
+
+#msgs{
+background-color: darkgray;
+height: 85vh;
+width: 80%;
+border: 1px solid cornsilk;
+border-radius: 5px;
+margin: auto;
+overflow-y: scroll;
+}
+
+
+.self-class{
+ background-color: blueviolet;
+ width: 40vh;
+ padding: 10px;
+ margin: 10px;
+ border: 2px solid red;
+ border-radius: 8px;
+ float: right;
+ clear: both;
+ word-wrap: normal;
+ word-wrap: break-word;
+
+
+}
+
+.others-class{
+    background-color: blue  ;
+    width: 40vh;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid red;
+    border-radius: 8px;
+    float: left;
+    clear: both;
+    word-wrap: normal;
+    word-wrap: break-word;
+
+}
+
+.joinannounce{
+    text-align: center;
+}
+
+.senderbox{
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    resize: both;
+}
+.senderbox input{
+    
+    width: 80%;
+    height: 40px;
+    float: left;
+    border: 2px solid purple;
+    
+}
+.senderbox button{
+    width: 20%;
+    height: 40px;
+    float: left;
+    border:2px solid #555050;
+}

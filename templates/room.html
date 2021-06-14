@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat box</title>
+    <style>
+        .item1 { grid-area: 1 / 1 / 2 / 2; }
+        .item2 { grid-area: 1 / 2 / 2 / 3; }
+        
+        .grid-container {
+          display: grid;
+          grid-auto-rows: 150px;
+          grid-gap: 5px;
+        
+          padding: 10px;
+        }
+        
+        .grid-container > div {
+          background-color: rgba(255, 255, 255, 0.8);
+          text-align: center;
+          padding: 20px 0;
+          font-size: 30px;
+        }
+        </style>
+    
+</head>
+<body align="center" style="margin: 25px;
+width: auto;
+padding-top: 25px;
+border: 3px solid rgb(194, 95, 224);,
+">
+<h1 style="font-size: 50px;padding-left: 10px;">Private chatbox here</h1>
+<p style="padding-left: 13px;font-size: 20px;line-height: normal;"> Data Secured Chatting built for everyone at Free.
+    <br>
+    we do not store chats    
+    <br>
+    Fully Volatile 
+</p>
+<br>
+
+<br>
+
+<br>
+<div class="grid-container">
+    <div class="item1" style="padding: 25px;">
+    <button type="submit" id="newroom"  style="border: 5px;border-radius: 5px; border-color: lightslategrey;padding: 12px; background-color: antiquewhite;" > New Room </button>
+    </div>
+
+    <form class="item2" style="padding: 25px;">
+        <input id="joinroom" style="height: 25px; border-color:rgb(25, 37, 37);"  >
+        &nbsp;
+        <button id="joinroombutton" onclick="chatroom()" type="button" style="border: 5px;border-radius: 5px; border-color: lightslategrey;padding: 12px; background-color: antiquewhite;" >Join </button>
+    </form>
+</div>
+    
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('#newroom').click(function(){
+        $.ajax({
+            type:'GET',
+            url:'/room_id',
+            success : function(response){
+                document.getElementById("joinroom").value = response;
+            }
+
+        });
+    });
+
+
+    function chatroom(){
+        let roomid=document.getElementById("joinroom").value;
+        var ip=(location.protocol + '//' + document.domain +':'+ location.port + '/chat/'+roomid)
+        console.log(ip);
+        window.location = ip;
+        
+    };
+</script>
+
+</html>

@@ -1,0 +1,6 @@
+send message 06062021
+chatboxx styling
+sender reciver msgs differenciated
+sender recuver class added
+
+chatbox stylings
